@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="/stylesheets/app.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<!--Fonts-->
+		<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+		<!--Font Awesome-->
+		<script
+			src="https://kit.fontawesome.com/3808de5cb1.js"
+			crossorigin="anonymous"></script>
+
+		<title>Login</title>
+	</head>
+
+	<body>
+		<div class="header" style="margin-top: 5rem;margin-left: 2rem;">
+			<div>
+				<a href="../">
+					<img src="/img/back.svg" alt="" height="50px" />
+				</a>
+			</div>
+			<div class="header-logintext">Log In</div>
+			<div></div>
+		</div>
+		<div class="container">
+			<%if(error && error.length>0){%>
+			<div class="alert alert-danger" role="alert"><%=error%></div>
+			<%}%> <%if(success && success.length>0){%>
+			<div class="alert alert-success" role="alert"><%=success%></div>
+			<%}%>
+
+			<br /><br /><br /><br /><br /><br />
+			<h2 class="welcome">Welcome, Back</h2>
+
+			<form action="/login" method="POST" class="form">
+				<input
+					type="username"
+					name="username"
+					class="form-control"
+					placeholder="Username" />
+
+				<input
+					type="password"
+					name="password"
+					class="form-control"
+					placeholder="Password" />
+
+				<button type="submit" class="purp-btn submit" > Submit </button>
+			</form>
+			<div style="font-size: 30px;">or sign up with </div>
+			<div>
+				<img src="/img/google.svg" alt="">
+			</div>
+			<div style="font-size: 30px;">Don't have an account? <a href="/register" style="color:#2260FF"> Sign Up </a></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,417 @@
+*{
+	padding: 0;
+	margin:0;
+	box-sizing: border-box;
+	
+}
+
+:root{
+	--recallBlue: #4A0D66;
+	--recallBlue:#2260FF;
+}
+body{
+	min-height: 100vh;
+	display: flex;
+	background-color: #fff;
+	font-family: "League Spartan", sans-serif;
+	overflow: hidden;
+
+}
+.header{
+	position: absolute;
+	width: 100%;
+	padding: .5rem;
+	top:0;
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.header-logintext{
+	margin-right: 8rem;
+	color:#2260FF;
+	font-weight: bolder;
+	font-size: 5rem;
+}
+.header>i, .header>h3, #play-again{
+	color: white;
+	display: inline;
+	text-decoration: none;
+}
+.header>i{
+	float: right
+}
+.header>h3, #play-again{
+	font-size: 3rem;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+/*Landing Page*/
+h1{
+	font-size: 10rem;
+	margin: 4rem 0;
+
+}
+.purp-btn{
+	font-size: 50px;
+	text-decoration: none;
+	background-color: #2260FF;
+	margin-bottom: 2rem;
+	padding: 1rem 2rem;
+	color: white;
+	border-radius: 20px;
+	min-width: 800px;
+	text-align: center;
+	  font-family: "League Spartan", sans-serif;
+}
+
+.login-button{
+	font-size: 50px;
+	color: #2260FF;
+	text-decoration: none;
+	background-color: #CAD6FF;
+	margin-bottom: 2rem;
+	padding: 1rem 2rem;
+	font-weight: bolder;
+	border-radius: 20px;
+	min-width: 800px;
+	text-align: center;
+	  font-family: "League Spartan", sans-serif;
+}
+.welcome{
+	font-size: 60px;
+}
+.light-purp-btn{
+	display: inline-block;
+	background-color: rgba(74, 13, 102, 0.15);
+}
+.light-purp-btn>p, .light-purp-btn>i{
+	display: inline;
+}
+.margin-bottom{
+	margin-bottom: 8rem;
+}
+
+.brain{
+	width: 300px;
+}
+
+.container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100vw;
+	text-align: center;
+}
+.logout{
+	border-radius: 48px;
+	display: flex;
+	justify-content: space-evenly;
+	padding: 2rem;
+}
+.calender-container{
+	background-color: #CAD6FF;
+	width:100vw;
+	height:35rem;
+	display: flex;
+	flex-direction: column;	;
+	justify-content: end;
+	align-items: center;
+}
+.todays-calender{
+	border: 2px solid transparent;
+	border-radius: 48px;
+	width: 80%;
+	height: 20rem;
+	font-family: "League Spartan", sans-serif;
+	background-color: #fff;
+	margin-bottom: 2rem;
+	font-size: 40px;
+	display: flex;
+	color: gray;
+	font-weight: bolder;
+	justify-content: center;
+	align-items: center;
+}
+h2{
+	margin-bottom: 4rem;
+}
+.hide{
+	display: none;
+}
+.form-control{
+	font-size: 50px;
+	border: 4px solid transparent;
+	border-radius: 20px;
+	margin-bottom: 1rem;
+	padding: 1rem;
+	width: 80%;
+	font-family: "League Spartan", sans-serif;
+	text-align: center;
+	background-color: #ECF1FF;
+	height: 5rem;
+	
+}
+.form-control::placeholder{
+	color: #2260FF;
+}
+/*HomePage*/
+.homepage{
+	padding: 5rem;
+	justify-content: space-between !important;
+
+}
+.c{
+	padding: 5%;
+	width: 90%;
+}
+
+#user-dp{
+	float: right;
+	border-radius:100%;
+	width:300px;
+	height:300px;
+}
+
+#reminders{
+	margin-top: 5rem;
+	width: 90%;
+
+}
+.grid-container{
+	display: flex;
+	flex-direction: column;
+
+	width: 100%;
+}
+
+.home-head{
+	margin-top: 1rem;;
+	font-size: 3rem;
+	
+}
+
+.home-head2{
+	font-size: 2rem;
+	margin-top: 3rem;
+}
+p{
+	font-size: 2.5rem;
+}
+.home-head-bottom{
+	margin-bottom: 3rem;
+}
+.home-box{
+	background-color: #CAD6FF;
+	display: flex;
+	justify-content: space-between;
+	border-radius: 64px;
+	margin: 1rem;
+	width: 100%;
+	padding: 2rem;
+	text-decoration: none;
+	color: #000;
+}
+h3{
+	display: flex;
+	align-items: center;
+	margin-right: 6rem;
+	/* border: 2px solid black; */
+	font-size: 40px;
+}
+table{
+	width: 100%;
+	font-size: 3rem;
+	border-spacing: 0;
+}
+td, th{
+	padding: 2rem;
+	border: 5px solid var(--recallBlue);
+}
+th:nth-child(1){
+	border-radius: 10px 0 0 0;
+}
+th:nth-child(2){
+	border-radius: 0 10px 0 0;
+}
+tr:nth-child(n) > td:nth-child(1){
+	border-radius: 0 0 0 10px;
+}
+tr:nth-child(n) > td:nth-child(2){
+	border-radius: 0 0 10px 0;
+}
+.lastFiveDays{
+	width: 100vw;
+	height: 2rem;
+	margin-bottom: 1rem;
+	display: flex;
+	height: 70%;
+	justify-content: space-evenly;
+}
+.lastFiveDays-Child{
+	width:10rem;
+	margin-top: 2rem;
+	border-radius:128px;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	font-size: 60px;
+	font-weight: bolder;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+.lastFiveDays-Child:hover{
+	background-color: #2260FF;
+	color: #fff;
+}
+.active{
+	background-color: #2260FF;
+	color: #fff;
+}
+.news-container{
+	margin-top: 100px;
+}
+.news{
+	border: 5px solid var(--recallBlue);
+	border-radius: 20px;
+	padding: 2rem;
+	margin: 1rem;
+
+}
+.news-card{
+	
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+
+	text-align: left;
+}
+.news-text>h3{
+	font-size: 2rem;
+}
+
+.news-pic{
+	height: 400px;
+	width: 300px;
+	border-radius: 10px;
+	object-fit: cover;
+}
+.settings{
+	text-decoration: none;
+	color: white;
+	float: right;
+}
+.description{
+	margin-top: 2rem;
+	font-size: 1.5rem;
+}
+.hr, .hr-small{
+	width: 90%;
+	border-top:  5px solid rgba(74, 13, 102, 0.15);
+	
+	height: 0;
+}
+.hr-small{
+	margin: 3rem 0;
+
+}
+.hr{
+
+	margin-bottom: 5rem;
+}
+.form-row{
+	
+	text-align: left;
+	/* display: inline-block; */
+	margin-bottom: 3rem;
+}
+.chevron{
+	color: var(--recallBlue);
+}
+
+
+/*news settings*/
+.custom-control> label{
+	font-size: 3rem;
+}
+.custom-control-input{
+	height: 2rem;
+width: 3rem;
+margin-right: 2rem;
+
+}
+#heading-news{
+	font-size: 4rem;
+	margin-bottom: 3rem;
+}
+
+#relpic{
+	border-radius:100%;
+	width:200px;
+	height:200px;
+	object-fit: cover;
+}
+#relativepic{
+	border-radius:100%;
+	width:300px;
+	height:300px;
+	object-fit: cover;
+}
+#guesswhoform{
+	margin-top: 1rem;
+}
+
+/*Guesswho*/
+.options{
+	font-size: 2rem;
+	white-space:nowrap;
+}
+.crimson{
+	color: crimson;
+}
+
+.green{
+	color:rgb(13, 226, 13);
+}
+/*my circle*/
+.quiz{
+	border: 5px solid var(--recallBlue);
+	border-radius: 20px;
+	padding: 1rem;
+	margin-bottom: 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+.relative{
+	width: 90%;
+	border: 5px solid var(--recallBlue);
+	display: flex;
+	border-radius: 20px;
+	padding: 2rem;
+	align-items: flex-start;
+	justify-content: space-between;
+	text-align: left;
+	margin-bottom: 3rem;
+	
+}
+#reminders >p{
+	margin-bottom: 3rem;
+}
+
+.SageLabel{
+
+	font-size: 2.5rem;
+}
+
+.emptytop{
+	padding-top: 5rem;
+}
+
+
+
+

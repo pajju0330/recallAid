@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4ff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 375px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #4a6cf7;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        .header img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 16px;
+        }
+        .header p {
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
+        .icon-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .icon-container img {
+            width: 20px;
+            height: 20px;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background-color: #e6eaff;
+        }
+        .nav div {
+            text-align: center;
+        }
+        .nav div span {
+            display: block;
+            font-size: 12px;
+            color: #888;
+        }
+        .calendar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #d7e0ff;
+            padding: 10px 0;
+        }
+        .calendar div {
+            text-align: center;
+            color: #4a6cf7;
+            font-weight: bold;
+            width: 50px;
+        }
+        .calendar div div {
+            margin: 5px 0;
+        }
+        .calendar div.selected {
+            background-color: #4a6cf7;
+            color: #fff;
+            border-radius: 50%;
+            padding: 5px 0;
+        }
+
+        .event {
+            background-color: #f0f4ff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+        .event h2 {
+            font-size: 14px;
+            margin: 0 0 10px;
+        }
+        .event p {
+            font-size: 12px;
+            margin: 0;
+        }
+        .actions {
+            padding: 10px;
+        }
+        .action {
+            background-color: #e6eaff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .action .title {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 0 10px;
+        }
+        .action .rating {
+            color: #888;
+            font-size: 12px;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background-color: #4a6cf7;
+        }
+        .footer div {
+            text-align: center;
+            color: #fff;
+        }
+        .icon {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="path/to/avatar.jpg" alt="User Avatar">
+            <h1>Hi, Welcome Back</h1>
+            <p>John Doe</p>
+            <div class="icon-container">
+                <img src="path/to/bell-icon.png" alt="Notification Icon">
+                <img src="path/to/gear-icon.png" alt="Settings Icon">
+            </div>
+        </div>
+        <div class="nav">
+            <div>
+                <span>Doctors</span>
+            </div>
+            <div>
+                <span>Favorite</span>
+            </div>
+        </div>
+        <div class="calendar">
+            <div>
+                <div>9</div>
+                <div>MON</div>
+            </div>
+            <div>
+                <div>10</div>
+                <div>TUE</div>
+            </div>
+            <div class="selected">
+                <div>11</div>
+                <div>WED</div>
+            </div>
+            <div>
+                <div>12</div>
+                <div>THU</div>
+            </div>
+            <div>
+                <div>13</div>
+                <div>FRI</div>
+            </div>
+            <div>
+                <div>14</div>
+                <div>SAT</div>
+            </div>
+        </div>
+        
+        <div class="event">
+            <h2>Attention</h2>
+            <p>10 AM - 3 doses of xyz medicine</p>
+        </div>
+        <div class="actions">
+            <div class="action">
+                <div class="title">Play Games</div>
+                <div class="rating">Cognitive Support</div>
+            </div>
+            <div class="action">
+                <div class="title">Submit Reports</div>
+                <div class="rating">Help us so that we can help you</div>
+            </div>
+            <div class="action">
+                <div class="title">Report Behaviour</div>
+                <div class="rating">Behaviour Analysis is the key</div>
+            </div>
+            <div class="action">
+                <div class="title">Urgent Contact</div>
+                <div class="rating">Dr. Pearl Davidson, M.D.</div>
+            </div>
+        </div>
+        <div class="footer">
+            <div>
+                <img src="path/to/home-icon.png" alt="Home" class="icon">
+            </div>
+            <div>
+                <img src="path/to/message-icon.png" alt="Messages" class="icon">
+            </div>
+            <div>
+                <img src="path/to/contact-icon.png" alt="Contacts" class="icon">
+            </div>
+            <div>
+                <img src="path/to/settings-icon.png" alt="Settings" class="icon">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
