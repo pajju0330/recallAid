@@ -318,62 +318,8 @@ app.get("/news/configure", isLoggedIn, (req, res) => {
   res.render("newsapp/newsconfigure");
 });
 
-app.get("/entertainment", isLoggedIn, (req, res) => {
-  let myreminders = [];
-  var msg = "";
-  vidids = "";
-
-  var client1 = new MongoClient(uri, { useNewUrlParser: true });
-
-  client1.connect((err) => {
-    collection = client1.db("alzheimers").collection("events");
-
-    console.log("success getting");
-    collection
-      .find({ patUserName: req.user.username })
-      .toArray(function (err, data) {
-        if (err) throw err;
-        console.log(data);
-        myreminders = checkReminders(data);
-        if (myreminders.length == 0) {
-          msg = "No upcoming reminders (for 2 hours at least)";
-        }
-        //console.log("vidids");
-        //console.log(vidids);
-        //res.render('entertainment.ejs', {result: vidids, msg: msg, myreminders:myreminders});
-      });
-    client1.close();
-  });
-
-  var client = new MongoClient(uri, { useNewUrlParser: true });
-  client.connect((err) => {
-    collection = client.db("alzheimers").collection("users");
-
-    console.log("success getting");
-    collection
-      .find({ _id: ObjectId(req.user._id) })
-      .toArray(function (err, data) {
-        if (err) throw err;
-        console.log(data);
-
-        if (data[0].hasOwnProperty("videos")) {
-          for (var i = 0; i < data[0].videos.length - 1; i++) {
-            vidids += data[0].videos[i];
-            vidids += ",";
-          }
-          vidids += data[0].videos[data[0].videos.length - 1];
-          console.log(req.user.name);
-          console.log(vidids);
-        }
-
-        res.render("entertainment.ejs", {
-          result: vidids,
-          msg: msg,
-          myreminders: myreminders,
-        });
-      });
-    client.close();
-  });
+app.get("/contacts", isLoggedIn, (req, res) => {
+    res.render('contacts.ejs');
 });
 
 app.get("/addvideos", isLoggedIn, (req, res) => {

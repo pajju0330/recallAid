@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/stylesheets/app.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Contacts</title>
+	</head>
+	<body>
+		<div class="mainDoctorContainer">
+			<div class="doctorContainer">
+				<div class="photo">
+					<img
+						src="/img/doctors/doctor1.png"
+						id="user-dp"
+						style="width: 130px; height: 130px"
+						alt="" />
+				</div>
+				<div class="doctorDetails">
+					<div class="doctorName" style="font-weight: bolder; color: #2260ff">
+						Dr. Alexander Bennett, Ph.D.
+					</div>
+					<div>PhD in Dementia Studies</div>
+					<div style="margin-top: 1.5rem">
+						<img src="/img/doctor-details.svg" alt="" />
+					</div>
+				</div>
+			</div>
+			<div class="doctorContainer">
+				<div class="photo">
+					<img
+						src="/img/doctors/doctor2.png"
+						id="user-dp"
+						style="width: 130px; height: 130px"
+						alt="" />
+				</div>
+				<div class="doctorDetails">
+					<div class="doctorName" style="font-weight: bolder; color: #2260ff">
+						Dr. Michael Davidson, M.D..
+					</div>
+					<div>Doctor of Health Sciences</div>
+					<div style="margin-top: 1.5rem">
+						<img src="/img/doctor-details.svg" alt="" />
+					</div>
+				</div>
+			</div>
+			<div class="doctorContainer">
+				<div class="photo">
+					<img
+						src="/img/doctors/doctor3.png"
+						id="user-dp"
+						style="width: 130px; height: 130px"
+						alt="" />
+				</div>
+				<div class="doctorDetails">
+					<div class="doctorName" style="font-weight: bolder; color: #2260ff">
+						Dr. Olivia Turner, M.D.
+					</div>
+					<div>Distance Learning Certificate in Dementia Care</div>
+					<div style="margin-top: 1.5rem">
+						<img src="/img/doctor-details.svg" alt="" />
+					</div>
+				</div>
+			</div>
+			<div class="doctorContainer">
+				<div class="photo">
+					<img
+						src="/img/doctors/doctor4.png"
+						id="user-dp"
+						style="width: 130px; height: 130px"
+						alt="" />
+				</div>
+				<div class="doctorDetails">
+					<div class="doctorName" style="font-weight: bolder; color: #2260ff">
+						Dr. Sophia Mitz,Ph.D.
+					</div>
+					<div>Advanced Dementia Care Practice</div>
+					<div style="margin-top: 1.5rem">
+						<img src="/img/doctor-details.svg" alt="" />
+					</div>
+				</div>
+			</div>
+			<div class="purp-btn" style="padding: 0rem;margin-top: 1.5rem;width: 300px;">
+				<img style="width: 50px;height: 30px;" src="img/comment.svg" alt="">
+				<img  id="home" style="width: 50px;height: 30px;" src="img/home.svg" alt="">
+				<img id="contact" style="width: 50px;height: 30px;" src="img/person.svg" alt="">
+				<img style="width: 50px;height: 30px;" src="img/calender.svg" alt="">
+			</div>
+		</div>
+		<script>
+			const home = document.getElementById("home");
+			home.addEventListener("click", () => {
+				window.location.href = "/home";
+			});
+			const contact = document.getElementById("contact");
+			contact.addEventListener("click", () => {
+				window.location.href = "/contacts";
+			});
+		</script>
+	</body>
+</html>
