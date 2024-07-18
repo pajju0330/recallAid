@@ -16,23 +16,24 @@
 </head>
 
 <body>
-    <div class="header">
+    <div class="header" style="margin-top: 5rem; margin-left: 2rem">
         <a href="/home">
             <img src="/img/back.svg" alt="" height="50">
         </a>
     </div>
-    <div class="container">
-        <div class="quiz">
+    <div style="margin-top: 4rem;">
+        <div class="quiz" style="border: none;">
          <div class="emptytop"></div>
-        <form action="/games/SAGE" method ="POST">
+        <form action="/games/SAGE" style="display: flex;justify-content: start;flex-direction: column;" method ="POST">
             <% for(i=0;i< 5;i++) {%>
-               <span style="font-weight: bold;"> Q) <%=testData[i].question%></span>
+               <span style="font-weight: bold;font-size: 40px;padding: 1rem;margin: 1rem;display: flex;justify-content: start;"> Q) <%=testData[i].question%></span>
                 <p></p>
                 <p></p>
                 <%testData[i].options.forEach(item=>{%>
-                    
-                    <input type = "radio"  id = <%=item + i%>  name="<%='answer'+i%>" value=<%=item%> class="custom-control-input">
-                    <label class="SageLabel"  ><%=item%></label>
+                    <div style="display: flex;justify-content: start;">
+                    <input   type = "radio"  id = <%=item + i%>  name="<%='answer'+i%>" value=<%=item%> class="custom-control-input">
+                    <label style="display: flex;justify-content: start;margin-left: 1rem;" class="SageLabel"  ><%=item%></label>
+                </div>
                     <p></p>
                 <%})%>
                  
@@ -41,7 +42,7 @@
             <%}%>
             <p></p>
             <div class="emptydown"></div>
-            <button type="submit" class="purp-btn">Submit</button>
+            <button style="margin-top: 2rem;margin-left: 4rem;" type="submit" class="purp-btn">Submit</button>
             
     </form>
     </div>
