@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<link rel="stylesheet" href="/stylesheets/app.css" />
 
-<head>
-    <link rel="stylesheet" href="/stylesheets/app.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<!--Fonts-->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+			rel="stylesheet" />
+		<!--Font Awesome-->
+		<script
+			src="https://kit.fontawesome.com/3808de5cb1.js"
+			crossorigin="anonymous"></script>
 
+		<title>Score</title>
+	</head>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <!--Fonts-->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <!--Font Awesome-->
-    <script src="https://kit.fontawesome.com/3808de5cb1.js" crossorigin="anonymous"></script>
+	<body>
+		<div class="header" style="margin-top: 5rem; margin-left: 2rem">
+			<a href="/home">
+				<img src="/img/back.svg" alt="" height="50px" />
+			</a>
+		</div>
 
-    <title>Score </title>
-
-</head>
-
-<body>
-    <div class="header" style="margin-top: 5rem; margin-left: 2rem">
-        <a href="/home">
-            <img src="/img/back.svg" alt="" height="50px">
-        </a>
-
-    </div>
-
-
-    <div class="container home-container" style="border: 2px solid black;width: 40vw;height: 40vh;">
-        <h2 style="margin-top: 10rem;font-size: 80px;">Score: <%=score%>/5</h2>
-       
-
-    </div>
-</body>
-
+		<div class="score-parent">
+			<div class="container score-container">
+                <img src="/img/trophy.png" alt="" style="width: 600px;">
+                <div style="font-size: 64px;font-weight: bolder;color: purple;">Congratulations</div>
+                <div style="font-size: 42px;font-weight: 600;color: darkgray;">Your Score is: </div>
+				<h2 style="margin-top: 4rem; font-size: 80px">Score: <%=score%>/4</h2>
+			</div>
+		</div>
+	</body>
 </html>

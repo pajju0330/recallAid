@@ -413,5 +413,20 @@ margin-right: 2rem;
 }
 
 
-
-
+.score-parent{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.score-container{
+	width: 90vw;
+	height: 50vh;
+	background: rgba( 255, 255, 255, 0.45);
+	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.7 );
+	backdrop-filter: blur( 15px );
+	-webkit-backdrop-filter: blur( 15px );
+	border-radius: 10px;
+	border: 1px solid rgba( 255, 255, 255, 0.18 );
+	margin-left: 2rem;
+}
