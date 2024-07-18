@@ -91,7 +91,28 @@ const getSAGEScore = (answers, test) => {
   }
   return score_arr;
 };
-
+const imageQuiz = [
+  {
+    photoUrl :"/img/family/old_lady.jpeg",
+    options:["Emma Stone", "Nancy Potter", "Lily Lanes", "Hermione Weasly"],
+    correct : "Nancy Potter"
+  },
+  {
+    photoUrl :"/img/family/old_man.jpeg",
+    options:["Micheal Jorden", "Justin Bieber", "John Smith", "Charls Jackson"],
+    correct : "Charls Jackson"
+  },
+  {
+    photoUrl :"/img/family/young_ldy.jpeg",
+    options:["Lily Jorden", "Emma Bieber", "Sophia Smith", "Ava Jackson"],
+    correct : "Ava Jackson"
+  },
+  {
+    photoUrl :"/img/family/young_Man.jpg",
+    options:["Alex Bond", "James Jackson", "John Doe", "Jack Sparrow"],
+    correct : "James Jackson"
+  },
+]
 app.use(express("public"));
 app.set("view engine", "ejs");
 app.use(flash());
@@ -226,7 +247,24 @@ app.post("/register", upload.single("DP"), function (req, res, next) {
     }
   });
 });
+const answer = new Array(4);
+app.post('/submit/:index', (req, res) => {
+  const index = parseInt(req.params.index, 10);
+  // console.log("body:", req.body);
+  answer[index] = req.body.answer;
+  // You can handle the answer here, e.g., save it to the session or database
 
+  // Redirect to the next question
+  if (index + 1 < imageQuiz.length) {
+    res.redirect(`/guesswho/${index + 1}`);
+  } else {
+    let score = 0;
+    for(let i = 0; i < 4; ++i){
+      if(answer[i] == imageQuiz[i].correct) score+=1;
+    }
+    res.render('score.ejs',{score});  
+  }
+});
 app.get("/login", function (req, res) {
   res.render("auth/login.ejs");
 });
@@ -393,9 +431,7 @@ app.get("/memorygame", isLoggedIn, (req, res) => {
   res.render("memoryGame.ejs");
 });
 
-app.get("/quiz", (req, res) => {
-  res.render("quiz.ejs");
-});
+
 
 app.get("/circle", isLoggedIn, (req, res) => {
   let myreminders = [];
@@ -497,6 +533,7 @@ app.post(
     });
     var client = new MongoClient(uri, { useNewUrlParser: true });
     console.log("adding relative for");
+
     console.log(req.body);
     client.connect((err) => {
       collection = client.db("alzheimers").collection("relatives");
@@ -519,34 +556,13 @@ app.post(
   }
 );
 
-app.get("/guesswho", isLoggedIn, (req, res) => {
-  var client = new MongoClient(uri, { useNewUrlParser: true });
-  client.connect((err) => {
-    collection = client.db("alzheimers").collection("relatives");
-
-    console.log("success getting");
-    collection
-      .find({ patUserName: req.user.username })
-      .toArray(function (err, data) {
-        if (err) throw err;
-        console.log(data);
-        let maxind = Math.min(data.length, 5);
-        let randarray = getRandom(data, maxind);
-        let allnames = [];
-        for (var obj of data) {
-          allnames.push(obj.relName);
-        }
-        all_questions = [];
-        for (var obj of randarray) {
-          let question = GetRandQuestion(obj, allnames);
-          all_questions.push(question);
-        }
-
-        console.log("THE QUESTION SET IS", all_questions);
-        res.render("guesswho", { all_questions: all_questions });
-      });
-    client.close();
-  });
+app.get("/guesswho/:index", isLoggedIn, (req, res) => {
+  const index = parseInt(req.params.index, 10);
+  if (index < 0 || index >= imageQuiz.length) {
+    return res.redirect('/guesswho/0');  // Redirect to the first question if index is out of bounds
+  }
+  console.log("THE QUESTION SET IS", imageQuiz);
+  res.render('guesswho', { question: imageQuiz[index], currentIndex: index });
   //client.close();
 });
 
@@ -724,6 +740,7 @@ app.get("/events", isLoggedIn, (req, res) => {
         if (result.length == 0) {
           msg = "No upcoming reminders (for 2 hours at least)";
         }
+        console.log(result);
         res.render("events.ejs", { result: result, msg: msg });
       });
     client.close();

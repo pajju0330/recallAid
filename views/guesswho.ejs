@@ -1,73 +1,68 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<link rel="stylesheet" href="/stylesheets/app.css" />
 
-<head>
-  <link rel="stylesheet" href="/stylesheets/app.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<!--Fonts-->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+			rel="stylesheet" />
+		<!--Font Awesome-->
+		<script
+			src="https://kit.fontawesome.com/3808de5cb1.js"
+			crossorigin="anonymous"></script>
 
+		<title>Guess who?</title>
+	</head>
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <!--Fonts-->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-  <!--Font Awesome-->
-  <script src="https://kit.fontawesome.com/3808de5cb1.js" crossorigin="anonymous"></script>
+	<body>
+		<div class="header">
+			<a href="/home">
+				<img src="/img/back.svg" alt="" height="50px" />
+			</a>
+		</div>
 
-  <title>Landing</title>
-
-</head>
-
-<body>
-  <div class="header">
-    <a href="/home">
-      <img src="/img/back.png" alt="" height="50px">
-    </a>
-
-  </div>
-
-
-  <div class="container">
-    <h2 style="margin-top: 5rem;">Guess who?</h2>
-    <%var i=0%>
-
-
-    <form action="/guesswho/checkanswer" method="POST" id="guesswhoform">
-      <%for(var question of all_questions){%>
-
-      <%i+=1%>
-      <div class="quiz">
-        <img id="relpic" src="data:image/<%=question.photo.contentType%>;base64, 
-           <%=question.photo.data.toString('base64')%>">
-        <div class="form-row align-items-center">
-          <div class="custom-control custom-radio">
-            <input type="radio" id=<%="customRadio"+i%> name=<%="Choice"+i%> class="custom-control-input"
-              value="<%=question.options[0]%>">
-            <label class="custom-control-label" for=<%="customRadio"+i%>><%=question.options[0]%></label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input type="radio" id="customRadio1" name=<%="Choice" + i %> class="custom-control-input"
-              value="<%=question.options[1]%>">
-            <label class="custom-control-label" for="customRadio1"><%=question.options[1]%></label>
-          </div>
-
-
-
-        </div>
-      </div>
-      <%}%>
-
-        <button type="submit" class="purp-btn">Submit</button>
-     
-      
-    </form>
-</div>
-  
-
-</body>
-
+		<div class="container">
+			<h1 style="font-size: 5rem">Guess who?</h1>
+			<%var i=0%>
+			<div>
+				<!-- <img src="/img/family/old_lady.jpeg" style="widthl: 80vw" alt="" /> -->
+				<form
+					action="/submit/<%= currentIndex %>"
+					method="POST"
+					style="display: flex; flex-direction: column">
+					<div style="margin-bottom: 2rem">
+						<img
+							src="<%= question.photoUrl %>"
+							alt="Quiz Image"
+							style="width: 500px; height: auto" />
+						<% question.options.forEach((option, optIndex) => { %>
+						<label
+							for="option_<%= optIndex %>"
+							style="
+								font-size: 50px;
+								width: 500px;
+								display: flex;
+								justify-content: start;
+								margin-top: 2rem;
+							">
+							<input
+								type="radio"
+								style="width: 40px; height: 40px; margin-right: 2rem"
+								id="option_<%= optIndex %>"
+								name="answer"
+								value="<%= option %>" />
+							<%= option %>
+						</label>
+						<% }); %>
+					</div>
+					<button class="purp-btn" style="margin-top: 5rem" type="submit">
+						Submit and Next
+					</button>
+					<button class="login-button" style="color: #000;" type="button" onclick="window.location.href='/guesswho/<%= currentIndex - 1 %>';" <%= currentIndex === 0 ? 'disabled' : '' %>>Back</button>
+				</form>
+			</div>
+		</div>
+	</body>
 </html>
-
-
-
-
-
-
-    

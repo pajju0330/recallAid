@@ -9,14 +9,14 @@
 	<!--Font Awesome-->
 	<script src="https://kit.fontawesome.com/3808de5cb1.js" crossorigin="anonymous"></script>
 
-	<title>Landing</title>
+	<title>Add Reminders</title>
 
 </head>
 
 <body>
-	<div class="header">
+	<div class="header" style="margin-top: 5rem; margin-left: 2rem">
 		<a href="/events">
-			<img src="/img/back.png" alt="" height="50px">
+			<img src="/img/back.svg" alt="" height="50px">
 		</a>
 	</div>
 
@@ -29,13 +29,8 @@
             </div>
 		<%}%>
 		
-        <%if(success && success.length>0){%>
-            <div class="alert alert-success" role="alert">
-                  <%=success%>
-            </div>
-		<%}%>
 
-		<h2>Add reminder </h2>
+		<h1 style="font-size: 5rem;">Add Reminder </h1>
 
 
 		<form action="/eventsadd" method="post">
@@ -80,7 +75,8 @@
 
 			<input type="time" id="time" name="time" class="form-control" placeholder="time">
 			<input type="text" id="tag" name="tag" class="form-control" placeholder="Message">
-			<button type="submit" class="purp-btn">Submit</button>
+			<button type="submit" id="submit" class="purp-btn">Submit</button>
+			<a href="/events" id="a" ></a>
 		</form>
 
 
@@ -88,6 +84,17 @@
 
 
 	</div>
+	<script>
+		const submitBtn = document.getElementById("submit");
+		const a = document.getElementById("a");
+		submitBtn.onclick = (e) => {
+			e.preventDefault();
+			alert("Reminder added successfully");
+			// console.log(a);     
+			a.click();
+		}
+		
+	</script>
 </body>
 
 </html>
