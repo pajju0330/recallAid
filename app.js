@@ -33,7 +33,7 @@ const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
 
 const flash = require("connect-flash");
-const { generateText } = require("./geminiConnection");
+const { generateText, getResponseBot } = require("./geminiConnection");
 const { setReminder } = require("./triggerReminder");
 
 function isLoggedIn(req, res, next) {
@@ -377,7 +377,27 @@ app.get("/memorygame", isLoggedIn, (req, res) => {
   res.render("memoryGame.ejs");
 });
 
+const messages = [
+  {
+    type:"bot",
+    text:"Hello user, anything for me? any worry? I am here to help you out"
+  },
+  {
+    type:"user",
+    text:"Hello RecallAid"
+  }
+]
+app.get("/chat", isLoggedIn, (req, res) => {
+  res.render("chatbot.ejs",{messages});
+});
 
+app.post("/addMessage", async(req,res) => {
+  const message = req.body.message;
+  messages.push({type:"user",text:message});
+  const response = await getResponseBot(process.env.GEMINI_API_KEY, message);
+  messages.push({type:"bot",text:response});
+  res.redirect("/chat");
+});
 
 app.get("/circle", isLoggedIn, (req, res) => {
   let myreminders = [];

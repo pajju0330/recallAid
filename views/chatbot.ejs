@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="/stylesheets/app.css" />
+
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<!--Fonts-->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+			rel="stylesheet" />
+		<!--Font Awesome-->
+		<script
+			src="https://kit.fontawesome.com/3808de5cb1.js"
+			crossorigin="anonymous"></script>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>recallBot</title>
+		<style>
+			.chatbot-header {
+				background-color: #2260ff;
+				width: 110vw;
+				height: 5rem;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				color: #fff;
+				padding: 1rem;
+				font-size: 25px;
+				font-weight: bold;
+				/* border: 2px solid black; */
+			}
+			.chat-bubble {
+				position: relative;
+				background: #d3e1fb; /* Light blue background */
+				border-radius: 10px;
+				padding: 10px 20px;
+				width: fit-content;
+				max-width: 80%;
+				font-family: Arial, sans-serif;
+				font-size: 14px;
+				color: #333; /* Text color */
+
+				/* Box shadow for a subtle 3D effect */
+                margin-top: 1rem;
+				box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+			}
+
+			.chat-bubble.bot::after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				width: 0;
+				height: 0;
+				border: 10px solid transparent;
+				border-top-color: #d3e1fb; /* Arrow color matching the bubble background */
+				border-bottom: 0;
+				margin-left: -10px;
+				margin-bottom: -10px;
+                left:10px;
+			}
+			.chat-parentcontainer {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: end;
+			}
+			.chat-parent {
+				display: flex;
+				margin-top: 1rem;
+				flex-direction: column;
+                /* border:2px solid black; */
+			}
+			.chat-bubble.user {
+				align-self: flex-end;
+				background: #2260ff; /* User message bubble color */
+				color: #fff;
+			}
+            .chat-bubble.user::after{
+                content: "";
+				position: absolute;
+				bottom: 0;
+				width: 0;
+                right: 10px;
+				height: 0;
+				border: 10px solid transparent;
+				border-top-color: #2260ff; /* Arrow color matching the bubble background */
+				border-bottom: 0;
+				margin-left: -10px;
+				margin-bottom: -10px;
+            }
+			.chat-input-container {
+				display: flex;
+				justify-content: space-between;
+				padding: 1rem;
+				background: #fff;
+				border-top: 1px solid #ddd;
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+			}
+			.chat-input {
+				width: 80%;
+				padding: 0.5rem;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+			}
+			.send-button {
+				background: #2260ff;
+				color: #fff;
+				padding: 0.5rem 1rem;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				margin-left: 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="chat-parentcontainer">
+			<div class="chatbot-header">
+				<img id="back" src="/img/arrow.svg" style="margin-right: 1.3rem" alt="" />
+				Recall Bot
+			</div>
+			<div class="chat-parent">
+                <% messages.forEach(function(message) { %>
+                    <div class="chat-bubble <%= message.type %>">
+                        <%= message.text %>
+                    </div>
+                <% }); %>
+			</div>
+		</div>
+		<form method="post" action="/addMessage" class="chat-input-container">
+			<input
+				type="text"
+                name="message"
+				class="chat-input"
+				placeholder="Type your message..." />
+			<button type="submit" class="send-button">Send</button>
+		</form>
+        <script>
+            const back = document.getElementById("back");
+            back.addEventListener("click", () => {
+                window.location.href = "/home";
+            });
+        </script>
+	</body>
+</html>

@@ -83,7 +83,7 @@
 				</div>
 			</div>
 			<div class="purp-btn" style="padding: 0rem;margin-top: 1.5rem;width: 300px;">
-				<img style="width: 50px;height: 30px;" src="img/comment.svg" alt="">
+				<img id="comment" style="width: 50px;height: 30px;" src="img/comment.svg" alt="">
 				<img  id="home" style="width: 50px;height: 30px;" src="img/home.svg" alt="">
 				<img id="contact" style="width: 50px;height: 30px;" src="img/person.svg" alt="">
 				<img style="width: 50px;height: 30px;" src="img/calender.svg" alt="">
@@ -97,6 +97,10 @@
 			const contact = document.getElementById("contact");
 			contact.addEventListener("click", () => {
 				window.location.href = "/contacts";
+			});
+			const comment = document.getElementById("comment");
+			comment.addEventListener("click", () => {
+				window.location.href = "/chat";
 			});
 		</script>
 	</body>
