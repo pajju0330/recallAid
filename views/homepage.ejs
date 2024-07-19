@@ -49,7 +49,13 @@
 						<div>Fri</div>
 					</div>
 				</div>
-				<div class="todays-calender">No Active Reminder</div>
+				<%if(myreminders.length == 0){%>
+					<div class="todays-calender">No Active Reminder</div>
+				<%}else{%>
+					<% for(var i=0; i<myreminders.length; i++){ %>
+						<div class="todays-calender" style="height: 3.5rem;background-color: #CAD6FF;"> <span style="color: #2260FF;margin-right: 3rem;"><%= myreminders[i].time %></span> <%= myreminders[i].tag %></div>
+					<%}%>
+					<%}%>
 			</div>
 			<div class="grid-container">
 				<a href="/news" class="home-box">

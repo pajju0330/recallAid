@@ -1,101 +1,187 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<link rel="stylesheet" href="/stylesheets/app.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<!--Fonts-->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+			rel="stylesheet" />
+		<!--Font Awesome-->
+		<script
+			src="https://kit.fontawesome.com/3808de5cb1.js"
+			crossorigin="anonymous"></script>
 
-<head>
-	<link rel="stylesheet" href="/stylesheets/app.css">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<!--Fonts-->
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-	<!--Font Awesome-->
-	<script src="https://kit.fontawesome.com/3808de5cb1.js" crossorigin="anonymous"></script>
+		<title>Add Reminders</title>
+	</head>
 
-	<title>Add Reminders</title>
+	<body>
+		<div class="header" style="margin-top: 5rem; margin-left: 2rem">
+			<a href="/events">
+				<img src="/img/back.svg" alt="" height="50px" />
+			</a>
+		</div>
 
-</head>
+		<div class="container">
+			<%if(error && error.length>0){%>
+			<div class="alert alert-danger" role="alert"><%=error%></div>
+			<%}%>
 
-<body>
-	<div class="header" style="margin-top: 5rem; margin-left: 2rem">
-		<a href="/events">
-			<img src="/img/back.svg" alt="" height="50px">
-		</a>
-	</div>
+			<h1 style="font-size: 5rem">Add Reminder</h1>
 
-
-	<div class="container">
-
-		<%if(error && error.length>0){%>
-            <div class="alert alert-danger" role="alert">
-                  <%=error%>
-            </div>
-		<%}%>
-		
-
-		<h1 style="font-size: 5rem;">Add Reminder </h1>
-
-
-		<form action="/eventsadd" method="post">
-
-			<h3 class="home-head home-head-bottom">Select days</h3>
-			<div class="form-row align-items-center">
-				<div class="custom-control custom-radio">
-					<input type="checkbox" id="0" name="0" value="0" class="custom-control-input">
-					<label for="days"> Sunday</label>
+			<form action="/eventsadd" method="post">
+				<h3 style="margin-left: 5rem" class="home-head home-head-bottom">
+					Select days
+				</h3>
+				<div style="margin-left: 5rem" class="form-row align-items-center">
+					<div class="custom-control custom-radio">
+						<input
+							type="checkbox"
+							id="0"
+							name="0"
+							value="0"
+							class="custom-control-input" />
+						<label for="days"> Sunday</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input
+							type="checkbox"
+							id="1"
+							name="1"
+							value="1"
+							class="custom-control-input" />
+						<label for="days"> Monday</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input
+							type="checkbox"
+							id="2"
+							name="2"
+							value="2"
+							class="custom-control-input" />
+						<label for="days"> Tuesday</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input
+							type="checkbox"
+							id="3"
+							name="3"
+							value="3"
+							class="custom-control-input" />
+						<label for="days"> Wednesday</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input
+							type="checkbox"
+							id="4"
+							name="4"
+							value="4"
+							class="custom-control-input" />
+						<label for="days"> Thursday</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input
+							type="checkbox"
+							id="5"
+							name="5"
+							value="5"
+							class="custom-control-input" />
+						<label for="days"> Friday</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input
+							type="checkbox"
+							id="6"
+							name="6"
+							value="6"
+							class="custom-control-input" />
+						<label for="days"> Saturday</label>
+					</div>
 				</div>
-				<div class="custom-control custom-radio">
-					<input type="checkbox" id="1" name="1" value="1" class="custom-control-input">
-					<label for="days"> Monday</label>
-				</div>
-				<div class="custom-control custom-radio">
-					<input type="checkbox" id="2" name="2" value="2" class="custom-control-input">
-					<label for="days"> Tuesday</label>
-	
-				</div>
-				<div class="custom-control custom-radio">
-					<input type="checkbox" id="3" name="3" value="3" class="custom-control-input">
-					<label for="days"> Wednesday</label>
-	
-				</div>
-				<div class="custom-control custom-radio">
-					<input type="checkbox" id="4" name="4" value="4" class="custom-control-input">
-					<label for="days"> Thursday</label>
-	
-				</div>
-				<div class="custom-control custom-radio">
-					<input type="checkbox" id="5" name="5" value="5" class="custom-control-input">
-					<label for="days"> Friday</label>
-	
-				</div>
-				<div class="custom-control custom-radio">
-					<input type="checkbox" id="6" name="6" value="6" class="custom-control-input">
-					<label for="days"> Saturday</label>
-				</div>
-	
-			</div>
-				
 
-			<input type="time" id="time" name="time" class="form-control" placeholder="time">
-			<input type="text" id="tag" name="tag" class="form-control" placeholder="Message">
-			<button type="submit" id="submit" class="purp-btn">Submit</button>
-			<a href="/events" id="a" ></a>
-		</form>
+				<input
+					type="time"
+					id="time"
+					name="time"
+					class="form-control"
+					placeholder="time" />
+				<input
+					type="text"
+					id="tag"
+					name="tag"
+					class="form-control"
+					placeholder="Message" />
+				<a href="/events" id="a"></a>
+				<button type="submit" id="submit" class="purp-btn">Submit</button>
+			</form>
+		</div>
+		<script>
+			const submitBtn = document.getElementById("submit");
+			submitBtn.onclick = (e) => {
+				// e.preventDefault();
+				const timeSelector = document.getElementById("time").value;
+				const messageInput = document.getElementById("tag").value;
+				const [hours, minutes] = timeSelector.split(":").map(Number);
+				const now = new Date();
+				const alarmTime = new Date(
+					now.getFullYear(),
+					now.getMonth(),
+					now.getDate(),
+					hours,
+					minutes,
+					0
+				);
+				const a = document.getElementById("a");
+				console.log(messageInput, alarmTime);
+				alert("Reminder added successfully");
+				localStorage.setItem("alarmTime", alarmTime.toString());
+				localStorage.setItem("alarmMessage", messageInput);
+				scheduleSpeech(messageInput, alarmTime);
 
+				// console.log(a);
+				// a.click();
+			};
+			function loadAlarm() {
+				const storedTime = localStorage.getItem("alarmTime");
+				const storedMessage = localStorage.getItem("alarmMessage");
 
+				if (storedTime && storedMessage) {
+					const alarmTime = new Date(storedTime);
+					const now = new Date();
 
+					if (alarmTime > now) {
+						document.getElementById("time").value = `${String(
+							alarmTime.getHours()
+						).padStart(2, "0")}:${String(alarmTime.getMinutes()).padStart(
+							2,
+							"0"
+						)}`;
+						document.getElementById("tag").value = storedMessage;
+						scheduleSpeech(storedMessage, alarmTime);
+					} else {
+						// Remove past alarm from localStorage
+						localStorage.removeItem("alarmTime");
+						localStorage.removeItem("alarmMessage");
+					}
+				}
+			}
+			function scheduleSpeech(text, time) {
+				const now = new Date();
+				const alarmTime = new Date(time);
 
+				const timeDifference = alarmTime.getTime() - now.getTime();
 
-	</div>
-	<script>
-		const submitBtn = document.getElementById("submit");
-		const a = document.getElementById("a");
-		submitBtn.onclick = (e) => {
-			e.preventDefault();
-			alert("Reminder added successfully");
-			// console.log(a);     
-			a.click();
-		}
-		
-	</script>
-</body>
+				if (timeDifference < 0) {
+					console.error("The specified time is in the past.");
+					return;
+				}
 
+				setTimeout(() => {
+					const utterance = new SpeechSynthesisUtterance(text);
+					speechSynthesis.speak(utterance);
+				}, timeDifference);
+			}
+			window.onload = loadAlarm;
+		</script>
+	</body>
 </html>
-

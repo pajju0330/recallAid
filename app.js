@@ -114,10 +114,10 @@ const imageQuiz = [
   },
 ]
 app.use(express("public"));
+app.use(express.json());
 app.set("view engine", "ejs");
 app.use(flash());
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -198,11 +198,10 @@ app.get("/home", isLoggedIn, function (req, res) {
       .toArray(function (err, data) {
         if (err) throw err;
         console.log("get data check here", data);
-        myreminders = checkReminders(data);
-        if (myreminders.length == 0) {
+        if (data.length == 0) {
           msg = "No upcoming reminders (for 2 hours at least)";
         }
-        res.render("homepage.ejs", { myreminders: myreminders, msg: msg });
+        res.render("homepage.ejs", { myreminders: data, msg: msg });
       });
     //client.close();
     console.log("REMINDERS LATER", myreminders);
@@ -362,11 +361,10 @@ app.get("/games", isLoggedIn, (req, res) => {
       .toArray(function (err, data) {
         if (err) throw err;
         console.log(data);
-        myreminders = checkReminders(data);
-        if (myreminders.length == 0) {
+        if (data.length == 0) {
           msg = "No upcoming reminders (for 2 hours at least)";
         }
-        res.render("games.ejs", { myreminders: myreminders, msg: msg });
+        res.render("games.ejs", { myreminders: data, msg: msg });
       });
     client.close();
   });
@@ -412,8 +410,7 @@ app.get("/circle", isLoggedIn, (req, res) => {
       .toArray(function (err, data) {
         if (err) throw err;
         console.log(data);
-        myreminders = checkReminders(data);
-        if (myreminders.length == 0) {
+        if (data.length == 0) {
           msg = "No upcoming reminders (for 2 hours at least)";
         }
         //res.render('events.ejs', {result: result, msg: msg});
@@ -702,12 +699,11 @@ app.get("/events", isLoggedIn, (req, res) => {
       .toArray(function (err, data) {
         if (err) throw err;
         console.log(data);
-        result = checkReminders(data);
-        if (result.length == 0) {
+        
+        if (data.length == 0) {
           msg = "No upcoming reminders (for 2 hours at least)";
         }
-        console.log(result);
-        res.render("events.ejs", { result: result, msg: msg });
+        res.render("events.ejs", { result: data, msg: msg });
       });
     client.close();
   });
@@ -719,8 +715,8 @@ app.get("/eventsadd", isLoggedIn, (req, res) => {
   //console.log(req.query);
 });
 
-app.post("/eventsadd", isLoggedIn, (req, res) => {
-  console.log(req.body);
+app.post("/eventsadd", isLoggedIn, async(req, res) => {
+  console.log("req body is", req.body);
   var days = [];
   if ("0" in req.body) days.push("0");
   if ("1" in req.body) days.push("1");
@@ -738,7 +734,7 @@ app.post("/eventsadd", isLoggedIn, (req, res) => {
     tag: req.body.tag,
   });
   console.log(req.body.time,req.body.tag);
-  setReminder(req.body.time, req.body.tag);
+  // setReminder(req.body.time, req.body.tag);
   var client = new MongoClient(uri, { useNewUrlParser: true });
   // console.log("adding events for");
   // console.log(req.user.username);
@@ -757,7 +753,7 @@ app.post("/eventsadd", isLoggedIn, (req, res) => {
     });
     client.close();
   });
-  req.flash("success", "Event added succesfully");
+  // req.flash("success", "Event added succesfully");
   res.redirect("/eventsadd");
   //res.render('eventsAdd.ejs');
 });
